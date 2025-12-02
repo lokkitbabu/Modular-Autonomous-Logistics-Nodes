@@ -10,7 +10,7 @@ Modern warfighting has evolved beyond the capabilities of centralized logistics 
 
 ## 1. Introduction
 
-Conventional military logistics relies on centralized supply chains, vulnerable convoys, and human-in-the-loop delivery. The Ukraine war, Indo-Pacific theater planning, and emerging distributed lethality doctrines highlight a need for highly adaptable, field-repairable, and autonomous logistics infrastructure that can operate in degraded or disconnected environments[1][2].
+Conventional military logistics relies on centralized supply chains, vulnerable convoys, and human-in-the-loop delivery. The Ukraine war, Indo-Pacific theater planning, and emerging distributed lethality doctrines highlight a need for highly adaptable, field-repairable, and autonomous logistics infrastructure that can operate in degraded or disconnected environments.
 
 MALN addresses this with a deliberately bifurcated system design:
 
@@ -31,8 +31,8 @@ MALN's core innovation is the deliberate separation of fixed, high-value infrast
 
 This layer comprises the durable, capital-intensive backbone that supports all vehicle operations:
 
-- **Mission Operating System (MOS):** Centralized coordination and planning layer providing multi-leg route planning across air/land/sea domains, DDIL degradation handling, vehicle loss management, and dynamic tasking[3]. The MOS integrates with tactical C2, logistics systems, and commercial WMS where applicable.
-- **Open Standards and Interfaces:** Standardized cargo pod specifications, vehicle docking interfaces, and vehicle autonomy adapters enabling easy integration of diverse unmanned platforms from different OEMs[4].
+- **Mission Operating System (MOS):** Centralized coordination and planning layer providing multi-leg route planning across air/land/sea domains, DDIL degradation handling, vehicle loss management, and dynamic tasking. The MOS integrates with tactical C2, logistics systems, and commercial WMS where applicable.
+- **Open Standards and Interfaces:** Standardized cargo pod specifications, vehicle docking interfaces, and vehicle autonomy adapters enabling easy integration of diverse unmanned platforms from different OEMs.
 - **Hive and Cache Infrastructure:** Ruggedized FOB cache stations and shoreline/depot hives that provide recharge, pod handoff, local compute, mesh comms, and serve as refit or fallback navigation points.
 - **Secure Communications and Monitoring:** Mesh radio networks, backhaul links, encrypted command channels, and real-time fleet health monitoring essential for contested and GPS-denied environments.
 
@@ -42,7 +42,7 @@ This layer represents a one-time, amortizable investment that can support large 
 
 The vehicle layer focuses on small, inexpensive, modular unmanned platforms designed to be expendable and easily repaired or replaced on the battlefield:
 
-- **Sub-$5K Unit Cost Target:** Leverages 3D printing, COTS parts, and hot-swappable control modules to minimize per-vehicle cost[5].
+- **Sub-$5K Unit Cost Target:** Leverages 3D printing, COTS parts, and hot-swappable control modules to minimize per-vehicle cost.
 - **Modular Construction:** All vehicles use standardized compute stacks, power systems, and sensor interfaces that can be rapidly repaired or swapped by operators with minimal training.
 - **Designed for Attritability:** Acceptance that units may be lost to enemy action, environmental hazards, or operational wear without jeopardizing overall mission success. Resilience comes from redundancy and intelligent routing, not from making each platform invulnerable.
 - **Swarm and Redundancy Tactics:** Fleet-level coordination minimizes risk through quantity and flexible rerouting when vehicles are lost, rather than relying on individual platform survivability.
@@ -51,11 +51,11 @@ The vehicle layer focuses on small, inexpensive, modular unmanned platforms desi
 
 MALN vehicles are intentionally simple, optimized around standardized payloads and interfaces rather than bespoke, complex airframes or hulls:
 
-**MALN-G (Ground):** Wheeled or tracked UGV for final-meter delivery, overland routes, and dispersed caching. Target: 15-40 kg payload, 10-20 km range, <$5K unit cost.
+**MALN-G (Ground):** Wheeled or tracked UGV for final-meter delivery, overland routes, and dispersed caching. Target: 15-40 kg payload, 10-20 km range, <$8K unit cost.
 
-**MALN-A (Aerial):** VTOL or fixed-wing UAV for obstacle crossing, terrain-independent routing, and rapid handoffs. Target: 5-15 kg payload, 5-15 km range, <$4K unit cost.
+**MALN-A (Aerial):** VTOL or fixed-wing UAV for obstacle crossing, terrain-independent routing, and rapid handoffs. Target: 5-15 kg payload, 5-15 km range, <$10K unit cost.
 
-**MALN-S (Subsurface):** UUV or small autonomous surface vessel for littoral, riverine, and ship-to-shore operations. Target: 10-25 kg payload, 5-20 km range, <$6K unit cost.
+**MALN-S (Subsurface):** UUV or small autonomous surface vessel for littoral, riverine, and ship-to-shore operations. Target: 10-25 kg payload, 5-20 km range, <$15K unit cost.
 
 All three platforms dock to the same standardized hive, carry interchangeable pods, and receive tasking from the unified MOS.
 
@@ -94,7 +94,7 @@ Each MALN vehicle runs a ROS2-based autonomy stack optimized for DDIL operation:
 - Graceful degradation: vehicle continues to operate safely even if sensors fail or comms are jammed.
 
 **Swarm Coordination via Short-Range Mesh:**
-- Vehicles communicate with peers and hives over low-probability-of-intercept RF mesh, coordinating convoys or swarms when long-range comms unavailable[6].
+- Vehicles communicate with peers and hives over low-probability-of-intercept RF mesh, coordinating convoys or swarms when long-range comms unavailable.
 - Asynchronous task model: vehicles execute pre-planned missions locally and report status when comms available, rather than requiring continuous teleoperation.
 
 ### 3.2 Mission Operating System (MOS) Architecture
@@ -104,7 +104,7 @@ The MOS is the command and control brain that orchestrates all vehicles across d
 **Mission Tasking and COA Generation:**
 - Operators define high-level logistics intent: "Deliver 20 kg Class V ammunition to Squad B via Route Red, no-fly 0000–0100, by 0300."
 - MOS automatically generates 2–3 courses of action (COAs), each showing:
-  - Multi-leg route: e.g., Ship → USV to shore hive → UAV to forward cache → UGV to squad position
+  - Multi-leg route: e.g., Ship -> USV to shore hive -> UAV to forward cache -> UGV to squad position
   - Timing and risk assessment
   - Resource requirements (vehicles, battery, comms windows)
 - Logistician approves, adjusts, or overrides; MOS handles detailed planning and execution.
@@ -122,7 +122,7 @@ The MOS is the command and control brain that orchestrates all vehicles across d
 - OEM partners implement adapters for their platforms; the MOS remains platform-agnostic.
 
 **DDIL-Aware Operations:**
-- Multi-layer communications stack: SATCOM/long-range RF (preferred) → short-range mesh (degraded) → onboard autonomy (denied).
+- Multi-layer communications stack: SATCOM/long-range RF (preferred) -> short-range mesh (degraded) -> onboard autonomy (denied).
 - When SATCOM/GPS lost, vehicles fall back to mesh-coordinated swarms or execute pre-loaded waypoint chains.
 - MOS tracks comms quality and automatically adjusts routing: favoring high-comms-reliability paths when available, reverting to dead-reckoning routes when not.
 - Human operators retain ability to issue high-level abort commands via multiple channels (e.g., "abort all ground missions on Route Blue").
@@ -247,93 +247,30 @@ MALN's hybrid architecture yields several strategic and business advantages:
 - **Support for Tactical and Enterprise Buyers:** Tactical units focus on local vehicle availability and field repairs; enterprise logistics cells focus on system integration and planning. Both are supported by the same platform.
 
 ---
-
-## 7. Roadmap and Field Trials
-
-### Phase 1: Last-Mile Baseline (6–9 months)
-
-**Objective:** Validate end-to-end MOS logic and single-domain autonomy on a realistic scenario.
-
-**Deliverables:**
-- Standardized 20 kg pod and hive dock design.
-- Integration with 2–3 COTS UGV or small UAV platforms.
-- Working mission OS core (tasking, planning, fleet scheduler, DDIL awareness).
-- Reference autonomy adapters for chosen platforms.
-- Range trials: 3–5 km routes, pod handoffs, GPS/comms degradation scenarios.
-- Customer feedback loops with Army/Marine logistics cells.
-
-**Key Metrics:**
-- End-to-end mission success rate >90%.
-- Pod handoff time <10 minutes.
-- Vehicle repair time <20 minutes for common failures.
-- Mesh comms range >2 km in urban/forested terrain.
-
-### Phase 2: Multi-Domain Handoff and Pilot (6–9 months)
-
-**Objective:** Integrate air and ground domains and demonstrate automatic pod transfer at hives.
-
-**Deliverables:**
-- Integration with existing USV, larger UAV, or commercial platform.
-- Refined hive dock supporting multi-vehicle docking and simultaneous charging.
-- Extended mission OS for multi-leg route composition (e.g., ship → shore → air → ground).
-- Autonomy adapters for 3–4 additional vehicle types.
-- Distributed field trials with military customer or coalition partner.
-- GPS/SATCOM jamming tests and DDIL failover verification.
-- Technical specification for defense and dual-use integration.
-
-**Key Metrics:**
-- Multi-leg missions planned and executed automatically.
-- Pod transfer between vehicle types <15 minutes.
-- DDIL operation (no SATCOM) for >4 hours with mesh-only comms.
-- Fleet throughput: >50 kg delivered per platform per day.
-
-### Phase 3: Full Tri-Domain Integration and Deployment (9–12 months)
-
-**Objective:** Achieve full USV/UAV/UGV orchestration and field-trial at scale with a military or humanitarian customer.
-
-**Deliverables:**
-- Complete tri-domain mission OS and fleet orchestration.
-- Integration with Army/Marine tactical C2 systems (if cleared) or commercial logistics platforms.
-- Operator UI for COA generation, approval, and real-time monitoring.
-- Final vehicle designs and hive production models.
-- Joint exercises or field trials demonstrating contested-environment resupply.
-- Policy review and doctrinal fit assessment with DoD/NATO.
-- Certification roadmap for civilian autonomous platforms.
-- Initial procurement pathway or pilot program with customer.
-
-**Key Metrics:**
-- Tri-domain missions (ship → shore → air → ground) executed reliably.
-- System throughput: >500 kg delivered per day across a brigade sector.
-- Personnel safety improvement: reduction in driver/crew exposure vs. manned logistics.
-- Cost per kg delivered: <$X (target to be refined with customer).
-- System uptime: >95% in contested environment.
-
----
-
 ## 8. Market and Customer Opportunity
 
 ### Primary Defense Customers
 
 **U.S. Military:**
-- U.S. Army BCT Sustainment Battalions and Division Support Operations require autonomous last-mile resupply in contested Indo-Pacific and European scenarios[7].
+- U.S. Army BCT Sustainment Battalions and Division Support Operations require autonomous last-mile resupply in contested Indo-Pacific and European scenarios.
 - U.S. Marine Corps expeditionary and littoral units need ship-to-shore autonomous logistics for forward bases and MEU operations.
 - Joint Logistics Over-the-Shore (JLOTS) and amphibious logistics doctrines explicitly call for automated tri-domain resupply.
 
 **Allied Forces:**
-- Ukrainian Armed Forces are currently using ad-hoc drones and UGVs for trench resupply; an integrated MALN system would standardize and accelerate deployment[8].
+- Ukrainian Armed Forces are currently using ad-hoc drones and UGVs for trench resupply; an integrated MALN system would standardize and accelerate deployment.
 - NATO members (Poland, Baltics, Nordic, UK) operating forward-deployed logistics in contested scenarios.
 - Coalition partners (ROK, Japan, Australia) in the Indo-Pacific.
 
 ### Civilian and Humanitarian Markets
 
-- **International NGOs and UNHCR:** Disaster response and humanitarian logistics in cut-off areas[9].
+- **International NGOs and UNHCR:** Disaster response and humanitarian logistics in cut-off areas.
 - **Energy Companies:** Offshore wind, oil/gas, and mining resupply in high-risk maritime and remote zones.
 - **Commercial Last-Mile:** Urban and rural underserved delivery, especially in areas with poor road infrastructure.
 
 ### Market Size and Growth
 
-- **U.S. military procurement:** Contested logistics is a multi-billion-dollar DoD priority. A modest 5–10% shift toward autonomous last-mile could represent $500M–$1B+ over 10 years[10].
-- **Commercial autonomous logistics:** Projected to grow 20%+ annually as platforms mature and regulatory frameworks clarify[11].
+- **U.S. military procurement:** Contested logistics is a multi-billion-dollar DoD priority. A modest 5–10% shift toward autonomous last-mile could represent $500M–$1B+ over 10 years.
+- **Commercial autonomous logistics:** Projected to grow 20%+ annually as platforms mature and regulatory frameworks clarify.
 - **Dual-use advantage:** Single platform development serves both military and civilian markets, reducing R&D cost and risk.
 
 ---
@@ -344,17 +281,17 @@ MALN's hybrid architecture yields several strategic and business advantages:
 
 | Dimension | Large Cargo UAVs (Skyways, Elroy, KARGO) | Manned Logistics | MALN |
 |-----------|------------------------------------------|-----------------|------|
-| **Primary Role** | Middle-mile, 50–200 kg, 100+ km[12] | All-domain, variable payload/range | Last-mile, 10–80 kg, 1–20 km |
+| **Primary Role** | Middle-mile, 50–200 kg, 100+ km | All-domain, variable payload/range | Last-mile, 10–80 kg, 1–20 km |
 | **Threat Tolerance** | Moderate; expensive platforms at risk | Very low; personnel at high risk | High; cheap, distributed assets expected to attrite |
 | **Domain Coverage** | Air primarily | All (fragmented, manual coordination) | All three coordinated, orchestrated |
 | **Standardization** | Single platform per vendor; lock-in | None (manned, ad-hoc) | Open pod/dock standard, plug-in vehicles |
-| **DDIL Resilience** | Limited; GPS/SATCOM dependent[13] | Human judgment; highly variable | Designed-in, mesh + onboard autonomy |
+| **DDIL Resilience** | Limited; GPS/SATCOM dependent | Human judgment; highly variable | Designed-in, mesh + onboard autonomy |
 | **Automation Level** | High (autonomous flight control) | Low (human-piloted) | Highest: end-to-end route planning + handoff orchestration |
 | **Economic Model** | Capital asset, high per-unit cost | High per-sortie crew cost | Fixed system + variable expendable vehicles |
 
 ### Key Differentiators
 
-1. **Tri-Domain Orchestration:** No competitor currently offers a unified mission brain for sea, air, and ground last-mile logistics[6].
+1. **Tri-Domain Orchestration:** No competitor currently offers a unified mission brain for sea, air, and ground last-mile logistics.
 2. **Standardized Pods and Hives:** Reduces cost of entry for new vehicle OEMs; enables rapid scaling as new platforms emerge.
 3. **DDIL-Native Design:** Built for contested, GPS-denied environments from the start, not added as an afterthought.
 4. **Attritable Vehicle Model:** Explicitly designed around low cost and expected attrition, inverting the "preserve every platform" mindset.
@@ -401,51 +338,6 @@ MALN's hybrid architecture yields several strategic and business advantages:
 
 ---
 
-## 11. Financial Model and Business Strategy
-
-### Unit Economics
-
-#### Fixed System and Infrastructure Layer
-
-- **Development cost:** ~$3–5M over 18 months (MOS, hive design, standards development, integrations).
-- **Per-deployment infrastructure:** $500K–$1M per hive (hardware, initial stock of vehicles, training).
-- **Selling model:** Software license ($200K–$500K/year per customer) + hive deployment fee ($500K–$1M) + integration services ($100K–$300K).
-
-#### Variable Attritable Vehicle Layer
-
-- **Per-vehicle manufacturing cost:** $3K–$4K (MALN-G, MALN-A, MALN-S).
-- **Selling price per vehicle:** $5K–$7K (reflecting higher margin on initial deployments).
-- **Operational cost per mission:** Low; vehicles are consumables treated like ammunition.
-
-### Revenue Scenarios (5-Year Horizon)
-
-**Conservative:** 
-- 5–10 military customers (U.S., allies) plus 2–3 humanitarian organizations.
-- ~20 systems/year fielded.
-- ~$20–30M ARR by year 5 (mix of licenses, deployments, and vehicle sales).
-
-**Moderate:**
-- 15–20 military customers, 5–10 humanitarian/commercial.
-- ~50 systems/year.
-- ~$50–80M ARR by year 5.
-
-**Aggressive:**
-- 30+ military and civilian customers globally.
-- ~100+ systems/year, plus COTS vehicle OEM partnerships.
-- ~$150M+ ARR by year 7–8, with high gross margins (60–70%) on software and infrastructure.
-
-### Go-to-Market Strategy
-
-**Phase 0 (Months 1–6):** Engagement with friendly military logistics communities (Army Fort Lee, USMC Lejeune, NATO logistics centers). Joint concept refinement and technology demonstration.
-
-**Phase 1 (Months 6–18):** First field trial with an early adopter military customer (e.g., Army BCT, Marines MEU, or ally logistics unit). Document operational benefits and lessons learned.
-
-**Phase 2 (Months 18–36):** Scale to 3–5 military customers. Parallel development of civilian and humanitarian variants. Begin OEM partnerships for vehicle adapters.
-
-**Phase 3 (Years 3+):** Mature product line serving defense, humanitarian, and commercial segments. Evaluate acquisition by major defense contractor or scale to IPO.
-
----
-
 ## 12. Conclusion
 
 Autonomous last-mile logistics in contested environments is a critical gap in modern military operations and an emerging civilian need. No current platform or system automates the final 1–20 km of resupply across sea, air, and ground while handling DDIL, standardizing handoffs, and giving operators simple, high-level control.
@@ -458,33 +350,3 @@ MALN addresses this by combining:
 4. **Dual-use design** that serves military, humanitarian, and commercial customers from a single platform, maximizing market reach and reducing per-customer R&D.
 
 The market is ready. Military doctrine is shifting toward contested logistics. Field trials (Ukraine, U.S. Army experiments) show operators already using ad-hoc mixes of small drones and UGVs. The next step is unified, reliable, autonomous orchestration with a cost model that matches operational reality.
-
----
-
-## References
-
-[1] U.S. Army. (2025, April 22). Theater Sustainment Transformation: Lessons from the Russia-Ukraine War. Army.mil. https://www.army.mil/article/274914/theater_sustainment_transformation_lessons_from_the_russia-ukraine_war
-
-[2] Small Wars Journal. (2025, November 23). Contested Logistical Resupply to the Zero Line: How Drones and Signals Require a Change in Thinking. https://smallwarsjournal.com/2025/11/24/contested-logistical-resupply-to-the-zero-line-how-drones-and-signals-require-a-change-i
-
-[3] U.S. Army. (2025, April 29). Redefining Logistics: Army Demonstrates Breakthrough in Autonomous Ship-to-Shore Resupply. Army.mil. https://www.army.mil/article/285029/redefining_logistics_army_demonstrates_breakthrough_in_autonomous_ship_to_shore_resupply
-
-[4] Heritage Foundation. (2025, October 15). An Everyman's Guide to Contested Logistics. https://www.heritage.org/defense/report/everymans-guide-contested-logistics
-
-[5] Defense One. (2025, March 27). The Army Wants Simple, Cheap Unmanned Tech—Here Are Some Options. https://www.defenseone.com/technology/2025/03/army-wants-simple-cheap-unmanned-techhere-are-some-options/404141/
-
-[6] Elsight. (2025, February 19). How Connected Unmanned Ground Vehicles (UGVs) Drive the Future of Military and Industrial Operations. https://www.elsight.com/blog/how-connected-unmanned-ground-vehicles-ugvs-drive-the-future-of-military-and-industrial-operations/
-
-[7] U.S. Army. (2024, April 22). Theater Sustainment Transformation: Lessons from the Russia-Ukraine War. Army.mil.
-
-[8] BBC. (2025, November 23). How robots are a lifeline to troops on Ukraine's eastern front. https://www.bbc.com/news/articles/cvgkg4zr33lo
-
-[9] Econstor. (2025). Potential applications of unmanned ground and aerial vehicles to disaster response and humanitarian operations. https://www.econstor.eu/bitstream/10419/298739/1/1738994902.pdf
-
-[10] Heritage Foundation. (2025, October 15). An Everyman's Guide to Contested Logistics.
-
-[11] ITU. (2023, July). Requirements for logistics express delivery based on civilian autonomous systems. ITU-T Recommendation F.749-16. https://www.itu.int/epublications/en/publication/itu-t-f-749-16-2023-07-requirements-for-logistics-express-delivery-based-on-civil
-
-[12] Skyways. (2025, June 8). Skyways Secures $37 Million USAF Contract to Rapidly Scale Autonomous Cargo Drones. https://www.skyways.com/newsroom/skyways-secures-37m-usaf-contract-to-rapidly-scale-autonomous-cargo-drones
-
-[13] Bluwireless. (2025, November 17). Drone Comms in GPS-Denied Environments: Tactical Mesh Solutions. https://www.bluwireless.com/insight/gps-denied-drone-communications/
